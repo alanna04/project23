@@ -1,3 +1,6 @@
+//Code for Memory Game
+
+//Keeps track of game play in hour, min, sec
 let min = 0;
 let sec = 0;
 let hours = 0;
@@ -23,6 +26,7 @@ window.onload = function() {
     }, 1000);
 };
 
+//Card listed
 let cards = [];
 let cardsName = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
 let openCards = [];
@@ -33,6 +37,11 @@ $('.deck').each(function() {
     });
 });
 let temp = 0;
+
+/*
+ * Displays and shuffles cards using shuffle method
+ * Cards are looped through
+ */
 
 cardsName = shuffle(cardsName);
 
@@ -45,6 +54,7 @@ $('.deck').each(function() {
     });
 });
 
+//Deck array
 $('.deck').each(function() {
     $(this).find('li').find('i').each(function() {
         let tempClass = $($(cards[temp][0]).find('i')[0]).attr('class');
@@ -54,6 +64,7 @@ $('.deck').each(function() {
     });
 });
 
+//Shuffle function shuffles cards
 function shuffle(array) {
     let currentIndex = array.length,
         temporaryValue, randomIndex;
@@ -69,6 +80,13 @@ function shuffle(array) {
     return array;
 }
 
+/*
+ * Creats event listener when card is clicked
+ *  displays card's symbol
+ *  adds to list of open cards for match
+ *  cards that don't match are remoced from list
+ *  when all cards match score and time is displayed with star point
+ */
 let moves = 0,
     stars = 3;
 
